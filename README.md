@@ -2,6 +2,8 @@
 
 Check if your sites are online for $7/mo.
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://www.heroku.com/deploy/?template=https://github.com/fnando/uptime_checker)
+
 ## Configuration
 
 You only have to create a `checkers.yml` file containing all your checkers. Here's an example:
