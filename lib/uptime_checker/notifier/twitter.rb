@@ -10,6 +10,8 @@ module UptimeChecker
       end
 
       def self.notify(subject, message, options)
+        require "twitter"
+
         client = ::Twitter::REST::Client.new do |config|
           config.consumer_key        = Config.twitter_consumer_key
           config.consumer_secret     = Config.twitter_consumer_secret
