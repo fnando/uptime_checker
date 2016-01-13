@@ -1,0 +1,11 @@
+{
+  "name": "Uptime Checker",
+  "description": "Check if your sites are online for $7/mo.",
+  "repository": "https://github.com/fnando/uptime_checker",
+  "logo": "https://dl.dropboxusercontent.com/u/1540890/uptime_checker/icon.svg",
+  "keywords": ["ruby", "uptime", "monitoring"],
+  "addons": [
+    "heroku-redis",
+    "sendgrid:starter"
+  ]
+}
