@@ -144,6 +144,8 @@ checks:
     status: 200
 ```
 
+![Telegram Notifications](https://raw.githubusercontent.com/fnando/uptime_checker/master/screenshots/telegram.png)
+
 ### E-mail
 
 **Note:** Currently only SendGrid is supported.
@@ -165,6 +167,8 @@ checks:
     notify: *notify
     status: 200
 ```
+
+![Email Notifications](https://raw.githubusercontent.com/fnando/uptime_checker/master/screenshots/email.png)
 
 ### Twitter
 
@@ -189,6 +193,8 @@ checks:
     status: 200
 ```
 
+![Twitter Notifications](https://raw.githubusercontent.com/fnando/uptime_checker/master/screenshots/twitter.png)
+
 ### Slack
 
 1. Create a new bot user at https://my.slack.com/services/new/bot
@@ -207,6 +213,8 @@ checks:
     status: 200
 ```
 
+![Slack Notifications](https://raw.githubusercontent.com/fnando/uptime_checker/master/screenshots/slack.png)
+
 ### Campfire
 
 1. Create a new bot user.
@@ -224,6 +232,8 @@ checks:
     notify: *notify
     status: 200
 ```
+
+![Campfire Notifications](https://raw.githubusercontent.com/fnando/uptime_checker/master/screenshots/campfire.png)
 
 ### Pushover
 
@@ -247,6 +257,8 @@ checks:
     status: 200
 ```
 
+![Pushover Notifications](https://raw.githubusercontent.com/fnando/uptime_checker/master/screenshots/pushover.png)
+
 ### Noti
 
 1. Create a new application at https://notiapp.com/apps/new
@@ -267,3 +279,5 @@ checks:
     notify: *notify
     status: 200
 ```
+
+![Noti Notifications](https://raw.githubusercontent.com/fnando/uptime_checker/master/screenshots/noti.png)
