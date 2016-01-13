@@ -127,7 +127,7 @@ After doing the upgrade, deploy it with `git push heroku mybranch:master -f`.
 3. Add bot to the group you just created.
 4. Go to @BotFather and `/setprivacy` to `enabled`. You also have to `/setjoingroups` to `disabled`.
 5. Go to the group you created and send a message to the bot; use something like `@YouBotName hello`.
-6. Make a curl request to discover the channel id. The following command will do: `curl curl https://api.telegram.org/bot<YOUR API TOKEN>/getUpdates`.
+6. Run `ruby setup/telegram.rb` locally to get the channel id. You may need to install the dependencies with `bundle install` before doing it so.
 7. Set the notification as `telegram: <chat id>`. Sometimes id can be a negative number and this is important.
 
 Example:
