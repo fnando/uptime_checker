@@ -1,0 +1,12 @@
+pt-BR:
+  up:
+    subject: "%{name} voltou"
+    message: |
+      %{name} está online novamente (%{time}).
+      Você pode ver em %{url}.
+
+  down:
+    subject: "%{name} caiu"
+    message: |
+      %{name} está offline (%{time}).
+      Você pode ver em %{url}.

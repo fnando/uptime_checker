@@ -1,0 +1,12 @@
+en:
+  up:
+    subject: "%{name} is up"
+    message: |
+      %{name} is back online as of %{time}.
+      You can check it at %{url}.
+
+  down:
+    subject: "%{name} is down"
+    message: |
+      %{name} is offline as of %{time}.
+      You can check it at %{url}.

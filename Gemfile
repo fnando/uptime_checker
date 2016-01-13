@@ -1,0 +1,13 @@
+source "https://rubygems.org"
+ruby "2.3.0"
+
+gem "mail"
+gem "twitter"
+gem "twilio"
+gem "aitch"
+gem "dotenv"
+gem "env_vars"
+gem "i18n"
+gem "redis"
+gem "telegram_bot"
+gem "noti"
