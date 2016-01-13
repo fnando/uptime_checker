@@ -31,4 +31,6 @@ I18n.load_path += Dir["#{__dir__}/uptime_checker/locales/**/*.yml"]
 Thread.abort_on_exception = UptimeChecker::Config.abort_thread_on_exception?
 $stdout.sync = true
 
+UptimeChecker.log enabled_notifiers: UptimeChecker::Notifier::ENABLED_NOTIFIERS.keys.join(", ")
+
 UptimeChecker.run
