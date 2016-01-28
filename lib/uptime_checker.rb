@@ -8,7 +8,7 @@ require "erb"
 require "yaml"
 
 def require_dir(dir)
-  Dir["#{dir}/**/*.rb"].each do |file|
+  Dir["#{dir}/**/*.rb"].sort.each do |file|
     require file
   end
 end
