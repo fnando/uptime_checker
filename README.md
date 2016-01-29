@@ -6,6 +6,13 @@ Check if your sites are online for $7/mo.
 
 ## Configuration
 
+1. Fork this repository
+2. Create a branch from `master`.
+3. Create the `checkers.yml` file with all your checkers and commit your changes.
+4. To keep up with `master`, switch to `master` and run `git pull`. Then switch to your branch and run `git rebase master`. This assumes you didn't touch any of the files, so you won't have any merging issues.
+
+### Defining your checkers
+
 You only have to create a `checkers.yml` file containing all your checkers. Here's an example:
 
 ```yaml
@@ -43,6 +50,16 @@ notify: &notify
 
 # ...
 ```
+
+For more information about the notifiers, keep reading this README.
+
+### Deployment
+
+## Deploying to a VPS
+
+You can deploy uptime_checker to a VPS. If you know how to deploy a Rails application, you won't have any issues deploying uptime_checker.
+
+If you don't, instructions to come. Use Heroku in the meantime.
 
 ## Deploying to Heroku
 
