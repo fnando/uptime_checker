@@ -29,7 +29,7 @@ module UptimeChecker
     end
 
     def check
-      UptimeChecker.log action: "checking",
+      UptimeChecker.log message: "starting check",
                         url: url
 
       previous_state = retrieve_previous_state
@@ -76,13 +76,13 @@ module UptimeChecker
     end
 
     def notify(from, to)
+      log_status(from, to)
+
       # site was online, and still is.
       return if from && to
 
       # site as offline, and still is.
       return if !from && !to
-
-      log_transition(from, to)
 
       # site was online, and now is offline.
       return Notifier.down(options) if from && !to
@@ -91,10 +91,20 @@ module UptimeChecker
       Notifier.up(options)
     end
 
-    def log_transition(from, to)
-      UptimeChecker.log check: url,
-                        from: status(from),
-                        to: status(to)
+    def log_status(from, to)
+      options = {url: url, message: "check finished"}
+
+      if from == to
+        options[:status] = "no changes"
+      else
+        options = options.merge(
+          from: status(from),
+          to: status(to),
+          status: "changed"
+        )
+      end
+
+      UptimeChecker.log(options)
     end
   end
 end
