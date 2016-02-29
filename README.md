@@ -77,13 +77,13 @@ checks:
 
 ### Deployment
 
-## Deploying to a VPS
+#### Deploying to a VPS
 
 You can deploy uptime_checker to a VPS. If you know how to deploy a Rails application, you won't have any issues deploying uptime_checker.
 
 If you don't, instructions to come. Use Heroku in the meantime.
 
-## Deploying to Heroku
+#### Deploying to Heroku
 
 First, clone this repository.
 
