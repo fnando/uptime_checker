@@ -1,12 +1,24 @@
 en:
+  minute:
+    one: 1 minute
+    other: "%{count} minutes"
+
+  second:
+    one: 1 second
+    other: "%{count} seconds"
+
+  day:
+    one: 1 day
+    other: "%{count} days"
+
   up:
     subject: "%{name} is up"
     message: |
-      %{name} is back online as of %{time}.
+      %{name} is back online at %{time}, after %{duration} of downtime.
       You can check it at %{url}.
 
   down:
     subject: "%{name} is down"
     message: |
-      %{name} is offline as of %{time}.
+      %{name} is offline since %{changed_at}.
       You can check it at %{url}.

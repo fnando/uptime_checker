@@ -1,12 +1,24 @@
 pt-BR:
+  minute:
+    one: 1 minuto
+    other: "%{count} minutos"
+
+  second:
+    one: 1 segundo
+    other: "%{count} segundos"
+
+  day:
+    one: 1 dia
+    other: "%{count} dias"
+
   up:
-    subject: "%{name} voltou"
+    subject: "%{name} está online"
     message: |
-      %{name} está online novamente (%{time}).
+      %{name} ficou online novamente em %{time}, depois de %{duration}.
       Você pode ver em %{url}.
 
   down:
-    subject: "%{name} caiu"
+    subject: "%{name} está offline"
     message: |
-      %{name} está offline (%{time}).
+      %{name} ficou offline em %{time}.
       Você pode ver em %{url}.

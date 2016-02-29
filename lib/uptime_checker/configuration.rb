@@ -4,6 +4,7 @@ module UptimeChecker
     optional :abort_thread_on_exception, bool, false
     optional :interval, int, 30
     optional :locale, string, "en"
+    optional :timezone, string, "Etc/UTC"
 
     optional :twitter_consumer_key, string, nil
     optional :twitter_consumer_secret, string, nil

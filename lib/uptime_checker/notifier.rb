@@ -7,21 +7,23 @@ module UptimeChecker
 
     COLOR = {up: "green", down: "red"}
 
-    def self.up(config)
+    def self.up(config, transition)
+      config["duration"] = Utils.relative_time(transition.previous.time, transition.current.time)
+      config["changed_at"] = transition.previous.time
+      config["time"] = transition.current.time
       notify(config, :up)
     end
 
-    def self.down(config)
+    def self.down(config, transition)
+      config["changed_at"] = transition.time
       notify(config, :down)
     end
 
     def self.notify(config, scope)
       i18n_options = {
         scope: scope,
-        name: config["name"],
-        url: config["url"],
-        time: Time.now.utc
-      }
+        time: Time.current
+      }.merge(Utils.symbolize_keys(config))
 
       message, subject = I18n.with_locale(Config.locale) do
         [I18n.t(:message, i18n_options), I18n.t(:subject, i18n_options)]

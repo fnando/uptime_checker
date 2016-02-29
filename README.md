@@ -11,6 +11,14 @@ Check if your sites are online for $7/mo.
 3. Create the `checkers.yml` file with all your checkers and commit your changes.
 4. To keep up with `master`, switch to `master` and run `git pull`. Then switch to your branch and run `git rebase master`. This assumes you didn't touch any of the files, so you won't have any merging issues.
 
+### Environment variables
+
+You can configure some options; just define the following environment variables.
+
+- `LOCALE`: the locale. Defaults to `en`. Check available languages at https://github.com/fnando/uptime_checker/tree/master/lib/uptime_checker/locales
+- `TIMEZONE`: the timezone. Defaults to `Etc/UTC`.
+- `INTERVAL`: the number of seconds between each verification. Defaults to `30`.
+
 ### Defining your checkers
 
 You only have to create a `checkers.yml` file containing all your checkers. Here's an example:
@@ -52,6 +60,20 @@ notify: &notify
 ```
 
 For more information about the notifiers, keep reading this README.
+
+#### Failures threshold
+
+You can set the minimum number of failures before triggering the notification. By default you'll be notified every time a check fails. 
+
+The following example will send notifications only when check fails three times.
+
+```yaml
+checks:
+  - name: My Site
+    url: http://example.com
+    notify: *notify
+    min_failures: 3
+```
 
 ### Deployment
 
