@@ -19,33 +19,40 @@ checkers:
     url: https://codeplane.com/
     notify: *notify
     status: 200
+    min_failures: 2
 
   - name: Codeplane
     url: https://codeplane.com.br/
     notify: *notify
     status: 200
+    min_failures: 2
 
   - name: Hellobits
     url: http://hellobits.com/
     notify: *notify
     status: 200
+    min_failures: 2
 
   - name: HOWTO
     url: http://howtocode.com.br/
     notify: *notify
     status: 200
+    min_failures: 2
 
   - name: Nando Vieira
     url: http://nandovieira.com/
     notify: *notify
     status: 200
+    min_failures: 2
 
   - name: Nando Vieira
     url: https://nandovieira.com.br/
     notify: *notify
     status: 200
+    min_failures: 2
 
   - name: Presentta
     url: https://presentta.com.br/
     notify: *notify
     status: 200
+    min_failures: 2
