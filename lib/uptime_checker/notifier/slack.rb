@@ -2,8 +2,8 @@ module UptimeChecker
   module Notifier
     class Slack
       COLORS = {
-        "green" => "good",
-        "red" => "danger"
+        green: "good",
+        red: "danger"
       }
 
       def self.enabled?
@@ -15,8 +15,8 @@ module UptimeChecker
       end
 
       def self.notify(subject, message, options)
-        channel = options["slack"]
-        color = COLORS[options["color"]]
+        channel = options[:slack]
+        color = COLORS[options[:color]]
 
         params = {
           token: Config.slack_api_token,

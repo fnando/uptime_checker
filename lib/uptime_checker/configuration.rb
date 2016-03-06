@@ -5,6 +5,8 @@ module UptimeChecker
     optional :interval, int, 30
     optional :locale, string, "en"
     optional :timezone, string, "Etc/UTC"
+    optional :uptime_checker_store, string, "redis"
+    optional :database_url, string, ""
 
     optional :twitter_consumer_key, string, nil
     optional :twitter_consumer_secret, string, nil
@@ -26,5 +28,18 @@ module UptimeChecker
     optional :campfire_subdomain, string, nil
 
     property :redis, -> { Redis.new }
+
+    property :store_adapter, -> {
+      case uptime_checker_store
+      when "redis"
+        require_relative "./store/redis"
+        Store::Redis
+      when "database"
+        require_relative "./store/database"
+        Store::Database
+      else
+        fail "invalid uptime store"
+      end
+    }
   end
 end

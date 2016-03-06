@@ -8,14 +8,14 @@ module UptimeChecker
     COLOR = {up: "green", down: "red"}
 
     def self.up(config, transition)
-      config["duration"] = Utils.relative_time(transition.previous.time, transition.current.time)
-      config["changed_at"] = transition.previous.time
-      config["time"] = transition.current.time
+      config[:duration] = Utils.relative_time(transition.previous.time, transition.current.time)
+      config[:changed_at] = transition.previous.time
+      config[:time] = transition.current.time
       notify(config, :up)
     end
 
     def self.down(config, transition)
-      config["changed_at"] = transition.time
+      config[:changed_at] = transition.time
       notify(config, :down)
     end
 
@@ -31,7 +31,7 @@ module UptimeChecker
 
       color = COLOR[scope]
 
-      config["notify"].each do |options|
+      config[:notify].each do |options|
         type = options.keys.first
         notifier = ENABLED_NOTIFIERS[type]
         next unless notifier
@@ -41,9 +41,9 @@ module UptimeChecker
                           target: options[type]
 
         options = options.merge(
-          "color" => color,
-          "url"   => config["url"],
-          "state" => scope
+          color: color,
+          url: config["url"],
+          state: scope
         )
 
         Thread.new { notifier.notify(subject, message, options) }

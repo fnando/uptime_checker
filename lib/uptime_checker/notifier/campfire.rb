@@ -13,7 +13,7 @@ module UptimeChecker
         body = {message: {body: message, type: "TextMessage"}}
         endpoint = File.join(
           "https://#{Config.campfire_subdomain}.campfirenow.com/room",
-          settings["campfire"].to_s,
+          settings[:campfire].to_s,
           "speak.json"
         )
 

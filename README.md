@@ -18,6 +18,7 @@ You can configure some options; just define the following environment variables.
 - `LOCALE`: the locale. Defaults to `en`. Check available languages at https://github.com/fnando/uptime_checker/tree/master/lib/uptime_checker/locales
 - `TIMEZONE`: the timezone. Defaults to `Etc/UTC`.
 - `INTERVAL`: the number of seconds between each verification. Defaults to `30`.
+- `UPTIME_CHECKER_STORE`: the store type you're going to use. Can be `database` or `redis`. Defaults to `redis`. If you choose `database`, make sure `DATABASE_URL` is defined.
 
 ### Defining your checkers
 
@@ -116,10 +117,18 @@ Now, configure Heroku. Create a new app for this.
 heroku create
 ```
 
-You'll also need a Redis instance.
+Now you have to choose your state store type. You may use [Redis](https://redis.io) or [PostgreSQL](https://postgresql.org).
+
+For Redis, use the following command:
 
 ```
 heroku addons:create heroku-redis
+```
+
+For PostgreSQL, use the following command:
+
+```
+heroku addons:create heroku-postgresql
 ```
 
 If you're going to send e-mail notification, you'll need Sendgrid as well.
@@ -133,6 +142,8 @@ Time to deploy:
 ```
 git push heroku mybranch:master
 ```
+
+If you're using PostgreSQL, also run `bundle exec sequel -m migrations $DATABASE_URL`.
 
 Scale up the uptime checker worker:
 

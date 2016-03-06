@@ -27,7 +27,7 @@ module UptimeChecker
         Mail.deliver do
           subject(subject)
           body(message)
-          to(options["email"])
+          to(options[:email])
           from("UptimeChecker <noreply@uptimechecker>")
         end
       end

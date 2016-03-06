@@ -10,12 +10,15 @@ GEM
     addressable (2.4.0)
     aitch (0.5.0)
       nokogiri (>= 1.6.0)
+    awesome_print (1.6.1)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     buftok (0.2.0)
     builder (3.2.2)
+    byebug (8.2.2)
+    coderay (1.1.1)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     descendants_tracker (0.0.4)
@@ -47,6 +50,7 @@ GEM
       mime-types (>= 1.16, < 3)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
+    method_source (0.8.2)
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
@@ -57,8 +61,26 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     noti (1.0.2)
       json
+    pg (0.18.4)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (3.3.0)
+      byebug (~> 8.0)
+      pry (~> 0.10)
+    pry-meta (0.0.10)
+      awesome_print
+      pry
+      pry-byebug
+      pry-remote
+    pry-remote (0.1.8)
+      pry (~> 0.9)
+      slop (~> 3.0)
     redis (3.2.2)
+    sequel (4.32.0)
     simple_oauth (0.3.1)
+    slop (3.6.0)
     telegram_bot (0.0.5)
       excon (>= 0.30.0)
       virtus (>= 1.0.0)
@@ -99,7 +121,10 @@ DEPENDENCIES
   i18n
   mail
   noti
+  pg
+  pry-meta
   redis
+  sequel
   telegram_bot
   twilio
   twitter

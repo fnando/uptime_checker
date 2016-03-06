@@ -33,9 +33,9 @@ module UptimeChecker
 
     def state
       {
-        "failures" => failures,
-        "time" => time,
-        "passed" => current.passed
+        failures: failures,
+        time: time,
+        passed: current.passed
       }
     end
 

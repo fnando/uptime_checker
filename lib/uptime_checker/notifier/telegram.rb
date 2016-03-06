@@ -14,7 +14,7 @@ module UptimeChecker
         bot = TelegramBot.new(token: Config.telegram_api_token)
 
         notification = TelegramBot::OutMessage.new
-        notification.chat = TelegramBot::Channel.new(id: options["telegram"])
+        notification.chat = TelegramBot::Channel.new(id: options[:telegram])
         notification.text = message
         notification.send_with(bot)
       end

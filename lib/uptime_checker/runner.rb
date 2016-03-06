@@ -23,8 +23,12 @@ module UptimeChecker
 
     def spawn_checkers
       config["checkers"].each do |site|
-        Checker.start(site)
+        Checker.start(Utils.symbolize_keys(site), store)
       end
+    end
+
+    def store
+      @store ||= Config.store_adapter.new.tap(&:connect!)
     end
   end
 end

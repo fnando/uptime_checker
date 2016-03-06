@@ -14,10 +14,10 @@ module UptimeChecker
         ::Noti.app = Config.noti_api_token
 
         notification = ::Noti::Notification.new
-        notification.url   = options["url"]
+        notification.url   = options[:url]
         notification.title = subject
         notification.text  = message
-        notification.deliver_to(options["noti"])
+        notification.deliver_to(options[:noti])
       end
     end
   end

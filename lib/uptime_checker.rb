@@ -8,14 +8,14 @@ require "active_support/time"
 require "erb"
 require "yaml"
 
-def require_dir(dir)
+def require_dir(dir, except = [])
   Dir["#{dir}/**/*.rb"].sort.each do |file|
-    require file
+    require file unless except.include?(file)
   end
 end
 
 require_dir "#{__dir__}/uptime_checker/notifier"
-require_dir "#{__dir__}"
+require_dir "#{__dir__}", Dir["#{__dir__}/uptime_checker/store/**/*.rb"]
 
 module UptimeChecker
   def self.log(options)

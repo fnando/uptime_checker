@@ -13,7 +13,7 @@ module UptimeChecker
         endpoint = "https://api.pushover.net/1/messages.json"
         HttpClient.post(endpoint,
                         token: Config.pushover_application_token,
-                        user: options["pushover"],
+                        user: options[:pushover],
                         title: subject,
                         message: message)
       end

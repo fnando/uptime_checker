@@ -19,7 +19,7 @@ module UptimeChecker
           config.access_token_secret = Config.twitter_access_secret
         end
 
-        client.create_direct_message(options["twitter"], message)
+        client.create_direct_message(options[:twitter], message)
       end
     end
   end

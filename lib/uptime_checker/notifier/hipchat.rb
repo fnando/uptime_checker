@@ -14,7 +14,7 @@ module UptimeChecker
         endpoint = "https://api.hipchat.com/v2/room/#{room_id}/notification"
         HttpClient.post(endpoint,
                         message_format: "text",
-                        color: options["color"],
+                        color: options[:color],
                         notify: true,
                         message: message,
                         title: subject,
