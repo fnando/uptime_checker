@@ -6,7 +6,7 @@ Check if your sites are online for $7/mo.
 
 ## Configuration
 
-1. Fork this repository
+1. Fork this repository. Make sure you hit the "Watch" button on this Github repository, so you can see when you have to update your own fork.
 2. Create a branch from `master`.
 3. Create the `checkers.yml` file with all your checkers and commit your changes.
 4. To keep up with `master`, switch to `master` and run `git pull`. Then switch to your branch and run `git rebase master`. This assumes you didn't touch any of the files, so you won't have any merging issues.
