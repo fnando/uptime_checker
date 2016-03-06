@@ -143,7 +143,7 @@ Time to deploy:
 git push heroku mybranch:master
 ```
 
-If you're using PostgreSQL, also run `bundle exec sequel -m migrations $DATABASE_URL`.
+If you're using PostgreSQL, also run `heroku run 'bundle exec sequel -m migrations $DATABASE_URL'`.
 
 Scale up the uptime checker worker:
 
