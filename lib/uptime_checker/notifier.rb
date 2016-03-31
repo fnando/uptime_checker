@@ -31,7 +31,7 @@ module UptimeChecker
 
       color = COLOR[scope]
 
-      config[:notify].each do |options|
+      config[:notify].flatten.each do |options|
         type = options.keys.first
         notifier = ENABLED_NOTIFIERS[type]
         next unless notifier
