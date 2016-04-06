@@ -22,7 +22,7 @@ module UptimeChecker
     end
 
     def spawn_checkers
-      config["checkers"].each do |site|
+      config.fetch("checkers").each do |site|
         Checker.start(Utils.symbolize_keys(site), store)
       end
     end

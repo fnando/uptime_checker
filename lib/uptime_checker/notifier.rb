@@ -46,7 +46,9 @@ module UptimeChecker
           state: scope
         )
 
-        Thread.new { notifier.notify(subject, message, options) }
+        Thread.new do
+          notifier.notify(subject, message, Utils.symbolize_keys(options))
+        end
       end
     end
   end

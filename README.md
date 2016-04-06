@@ -34,7 +34,7 @@ notify: &notify
   - hipchat: 456789
   - twitter: johndoe
 
-checks:
+checkers:
   - name: My Site
     url: http://example.com
     notify: *notify
@@ -69,7 +69,7 @@ You can set the minimum number of failures before triggering the notification. B
 The following example will send notifications only when check fails three times.
 
 ```yaml
-checks:
+checkers:
   - name: My Site
     url: http://example.com
     notify: *notify
@@ -187,7 +187,7 @@ Example:
 notify: &notify
   - telegram: 12345
 
-checks:
+checkers:
   - name: My Site
     url: http://example.com
     notify: *notify
@@ -211,7 +211,7 @@ Example:
 notify: &notify
   - email: john@example.com
 
-checks:
+checkers:
   - name: My Site
     url: http://example.com
     notify: *notify
@@ -236,7 +236,7 @@ Example:
 notify: &notify
   - twitter: johndoe
 
-checks:
+checkers:
   - name: My Site
     url: http://example.com
     notify: *notify
@@ -256,7 +256,7 @@ checks:
 notify: &notify
   - slack: "#core"
 
-checks:
+checkers:
   - name: My Site
     url: http://example.com
     notify: *notify
@@ -276,7 +276,7 @@ checks:
 notify: &notify
   - campfire: 123456
 
-checks:
+checkers:
   - name: My Site
     url: http://example.com
     notify: *notify
@@ -300,7 +300,7 @@ To avoid committing your user token, you can set it as an environment variable (
 notify: &notify
   - pushover: <%= ENV["PUSHOVER_JOHN"] %>
 
-checks:
+checkers:
   - name: My Site
     url: http://example.com
     notify: *notify
@@ -323,7 +323,7 @@ To avoid committing your user token, you can set it as an environment variable (
 notify: &notify
   - noti: <%= ENV["NOTI_JOHN"] %>
 
-checks:
+checkers:
   - name: My Site
     url: http://example.com
     notify: *notify
