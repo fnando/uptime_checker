@@ -20,10 +20,12 @@ module UptimeChecker
     end
 
     def self.notify(config, scope)
+      config = Utils.symbolize_keys(config)
+
       i18n_options = {
         scope: scope,
         time: Time.current
-      }.merge(Utils.symbolize_keys(config))
+      }.merge(config)
 
       message, subject = I18n.with_locale(Config.locale) do
         [I18n.t(:message, i18n_options), I18n.t(:subject, i18n_options)]
@@ -42,7 +44,7 @@ module UptimeChecker
 
         options = options.merge(
           color: color,
-          url: config["url"],
+          url: config[:url],
           state: scope
         )
 
