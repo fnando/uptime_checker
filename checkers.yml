@@ -51,8 +51,8 @@ checkers:
     status: 200
     min_failures: 2
 
-  - name: Presentta
-    url: https://presentta.com.br/
-    notify: *notify
-    status: 200
-    min_failures: 2
+  # - name: Presentta
+  #   url: https://presentta.com.br/
+  #   notify: *notify
+  #   status: 200
+  #   min_failures: 2
