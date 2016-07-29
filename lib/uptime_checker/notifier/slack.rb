@@ -2,8 +2,8 @@ module UptimeChecker
   module Notifier
     class Slack
       COLORS = {
-        green: "good",
-        red: "danger"
+        "green" => "good",
+        "red" => "danger"
       }
 
       def self.enabled?
