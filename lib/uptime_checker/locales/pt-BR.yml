@@ -6,6 +6,10 @@ pt-BR:
   second:
     one: 1 segundo
     other: "%{count} segundos"
+    
+  hour:
+    one: 1 hora
+    other: "%{count} horas"
 
   day:
     one: 1 dia
