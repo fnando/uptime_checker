@@ -37,8 +37,8 @@ module UptimeChecker
       UptimeChecker.log message: "check started",
                         url: url
 
-      previous_state = retrieve_previous_state
       current_state = retrieve_current_state
+      previous_state = retrieve_previous_state
       transition = Transition.new(previous_state, current_state)
 
       store.set(key, transition.state)

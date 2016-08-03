@@ -2,8 +2,8 @@ module UptimeChecker
   module Notifier
     class Slack
       COLORS = {
-        green: "good",
-        red: "danger"
+        "green" => "good",
+        "red" => "danger"
       }
 
       def self.enabled?
@@ -30,7 +30,11 @@ module UptimeChecker
           }])
         }
 
-        HttpClient.post("https://slack.com/api/chat.postMessage", params)
+        res = HttpClient.post("https://slack.com/api/chat.postMessage", params)
+        body = JSON.parse(res.body) rescue nil
+        if !body || !body["ok"]
+          puts "Slack API failed: #{res.inspect} #{body}"
+        end
       end
     end
   end
