@@ -22,3 +22,9 @@ en:
     message: |
       %{name} is offline since %{changed_at}.
       You can check it at %{url}.
+
+  warning:
+    subject: "%{name} is down"
+    message: |
+      %{name} is offline since %{changed_at}. And still didn't come up.
+      You can check it at %{url}.

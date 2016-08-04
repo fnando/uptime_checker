@@ -26,3 +26,9 @@ pt-BR:
     message: |
       %{name} ficou offline em %{time}.
       Você pode ver em %{url}.
+
+  warning:
+    subject: "%{name} está offline"
+    message: |
+      %{name} está offline desde %{changed_at}. A aplicação ainda não está disponível.
+      Você pode ver em %{url}.

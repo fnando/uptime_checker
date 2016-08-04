@@ -3,7 +3,8 @@ module UptimeChecker
     class Slack
       COLORS = {
         "green" => "good",
-        "red" => "danger"
+        "red" => "danger",
+        "orange" => "warning"
       }
 
       def self.enabled?
@@ -11,29 +12,48 @@ module UptimeChecker
       end
 
       def self.id
-        "slack"
+        "slack" || "slack_customer"
       end
 
       def self.notify(subject, message, options)
-        channel = options[:slack]
+        duration = Time.current - options[:ptime]
+
+       if options[:state] == :up || options[:state] == :down
+        channel = options[:slack]['main_c']
         color = COLORS[options[:color]]
 
         params = {
-          token: Config.slack_api_token,
-          text: "",
-          channel: channel,
-          attachments: JSON.dump([{
-            fallback: message,
-            title: subject,
-            text: message,
-            color: color
-          }])
+            token: Config.slack_api_token,
+            text: "",
+            channel: channel,
+            attachments: JSON.dump([{
+                                        fallback: message,
+                                        title: subject,
+                                        text: message,
+                                        color: color
+                                    }])
         }
 
-        res = HttpClient.post("https://slack.com/api/chat.postMessage", params)
-        body = JSON.parse(res.body) rescue nil
-        if !body || !body["ok"]
-          puts "Slack API failed: #{res.inspect} #{body}"
+        HttpClient.post("https://slack.com/api/chat.postMessage", params)
+       end
+
+       if options[:state] == :warning || options[:state] == :up && duration >= 5.minutes
+          channel = options[:slack]['secondary_c']
+          color = COLORS[options[:color]]
+
+          params = {
+              token: Config.slack_api_token,
+              text: "",
+              channel: channel,
+              attachments: JSON.dump([{
+                                          fallback: message,
+                                          title: subject,
+                                          text: message,
+                                          color: color
+                                      }])
+          }
+          HttpClient.post("https://slack.com/api/chat.postMessage", params)
+
         end
       end
     end
