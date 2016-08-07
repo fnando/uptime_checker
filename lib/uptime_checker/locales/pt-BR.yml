@@ -30,5 +30,5 @@ pt-BR:
   warning:
     subject: "%{name} está offline"
     message: |
-      %{name} está offline desde %{changed_at}. A aplicação ainda não está disponível.
+      %{name} está offline desde %{changed_at}. A aplicação ainda não ficou disponível.
       Você pode ver em %{url}.

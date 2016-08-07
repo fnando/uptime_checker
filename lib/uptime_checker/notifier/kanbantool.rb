@@ -12,10 +12,8 @@ module UptimeChecker
       end
 
       def self.notify(subject, message, options)
-        duration = (Time.current - options[:ptime])
         board_id = options[:kanbantool]['board_id']
-        if options[:state] == :up
-          if duration >= 5.minutes
+          if options[:state] == :warning
             Albatross::Admin::Client.endpoint = "http://sda.saude.gov.br/albatross-admin/"
             incident = Albatross::Admin::Client::Incident.new
             incident.status = "aberto"
@@ -31,8 +29,8 @@ module UptimeChecker
             if incident.save
               params = {
                   api_token: Config.kanbantool_api_token,
-                  name: subject,
-                  description: "#{message} </br> #{incident.id}",
+                  name: "#{subject} - #{Time.current}",
+                  description: "#{message} </br> A aplicação ainda não tinha retornado até o momento da abertura do chamado. </br>#{incident.id}",
                   workflow_stage_id: options[:kanbantool]['workflow_stage_id'],
                   card_type_id: options[:kanbantool]['card_type_id'],
               #    assigned_user_id: options[:kanbantool]['assigned_user_id'],
@@ -42,8 +40,8 @@ module UptimeChecker
             else
               params = {
                   api_token: Config.kanbantool_api_token,
-                  name: subject,
-                  description: "#{message} </br> Não foi aberto incidente no albatross. Não foi possível encontrar a referência da aplicação",
+                  name: "#{subject} - #{Time.current}",
+                  description: "#{message}</br> A aplicação ainda não tinha retornado até o momento da abertura do chamado. </br> Não foi aberto incidente no albatross. Não foi possível encontrar a referência da aplicação",
                   workflow_stage_id: options[:kanbantool]['workflow_stage_id'],
                   card_type_id: options[:kanbantool]['card_type_id'],
               #    assigned_user_id: options[:kanbantool]['assigned_user_id'],
@@ -65,8 +63,7 @@ module UptimeChecker
         #      swimlane_id: options[:kanbantool]['swimlane_id'],
         #      custom_field_1: "Não"
         #  }
-        #  HttpClient.post("https://xys.kanbantool.com/api/v1/boards/#{board_id}/tasks.xml", params)
-        end
+        #  HttpClient.post("https://xys.kanbantool.com/api/v1/boards/#{board_id}/tasks.xml", params
 
       end
     end
