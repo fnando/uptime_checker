@@ -15,3 +15,4 @@ gem "activesupport"
 gem "pry-meta"
 gem "sequel"
 gem "pg"
+gem 'albatross-admin-client', git: 'https://github.com/XysInteratividade/albatross-admin-client.git', branch: 'master'

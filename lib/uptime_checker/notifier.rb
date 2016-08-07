@@ -1,3 +1,5 @@
+require 'logger'
+
 module UptimeChecker
   module Notifier
     ENABLED_NOTIFIERS = Notifier.constants
@@ -5,7 +7,7 @@ module UptimeChecker
       .select(&:enabled?)
       .each_with_object({}) {|notifier, buffer| buffer[notifier.id] = notifier }
 
-    COLOR = {up: "green", down: "red"}
+    COLOR = {up: "green", down: "red", warning: "orange"}
 
     def self.up(config, transition)
       config[:duration] = Utils.relative_time(transition.previous.time, transition.current.time)
@@ -17,6 +19,16 @@ module UptimeChecker
     def self.down(config, transition)
       config[:changed_at] = transition.time
       notify(config, :down)
+    end
+
+    def self.warning(config, transition)
+      config[:changed_at] = transition.previous.time
+      config[:duration] = transition.current.time - transition.previous.time
+      notify(config, :warning)
+    end
+
+    def self.logger
+      @logger ||= Logger.new("./log/error.log", 10)
     end
 
     def self.notify(config, scope)
@@ -45,13 +57,20 @@ module UptimeChecker
         options = options.merge(
           color: color,
           url: config[:url],
-          state: scope
+          state: scope,
+          ptime: config[:changed_at],
+          name: config[:name]
         )
 
         Thread.new do
-          notifier.notify(subject, message, Utils.symbolize_keys(options))
+          begin
+            notifier.notify(subject, message, Utils.symbolize_keys(options))
+          rescue => e
+            logger.error e
+          end
         end
       end
     end
+
   end
 end

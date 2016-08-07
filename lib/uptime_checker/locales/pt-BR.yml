@@ -6,6 +6,10 @@ pt-BR:
   second:
     one: 1 segundo
     other: "%{count} segundos"
+    
+  hour:
+    one: 1 hora
+    other: "%{count} horas"
 
   day:
     one: 1 dia
@@ -21,4 +25,10 @@ pt-BR:
     subject: "%{name} está offline"
     message: |
       %{name} ficou offline em %{time}.
+      Você pode ver em %{url}.
+
+  warning:
+    subject: "%{name} está offline"
+    message: |
+      %{name} está offline desde %{changed_at}. A aplicação ainda não ficou disponível.
       Você pode ver em %{url}.

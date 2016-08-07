@@ -1,1 +1,4 @@
 .env
+.idea*
+uptime_checker.iml
+.ruby-version

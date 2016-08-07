@@ -27,6 +27,8 @@ module UptimeChecker
     optional :campfire_api_token, string, nil
     optional :campfire_subdomain, string, nil
 
+    optional :kanbantool_api_token, string, nil
+
     property :redis, -> { Redis.new }
 
     property :store_adapter, -> {

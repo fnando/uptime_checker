@@ -37,8 +37,8 @@ module UptimeChecker
       UptimeChecker.log message: "check started",
                         url: url
 
-      previous_state = retrieve_previous_state
       current_state = retrieve_current_state
+      previous_state = retrieve_previous_state
       transition = Transition.new(previous_state, current_state)
 
       store.set(key, transition.state)
@@ -90,6 +90,9 @@ module UptimeChecker
 
       # site is offline.
       Notifier.down(options, transition) if notify_down_change?(transition)
+
+      #site is offline for 5 minutes
+      Notifier.warning(options, transition) if notify_down_warning?(transition)
     end
 
     def notify_up_change?(transition)
@@ -101,6 +104,13 @@ module UptimeChecker
     def notify_down_change?(transition)
       !transition.current.passed &&
         transition.failures == min_failures
+    end
+
+    def notify_down_warning?(transition)
+      time_down = transition.current.time - transition.previous.time
+      time_down == 5.minutes &&
+        !transition.previous.passed &&
+        !transition.current.passed
     end
 
     def log_status(transition)
