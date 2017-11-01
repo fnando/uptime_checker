@@ -3,38 +3,14 @@ notify: &notify
   - email: fnando.vieira@gmail.com
   - stdout: ~
   - telegram: -97517324
-  # - pushover: <%= ENV["PUSHOVER_FNANDO"] %>
-  - noti: <%= ENV["NOTI_FNANDO"] %>
+  - pushover: <%= ENV["PUSHOVER_FNANDO"] %>
   # - hipchat: 2325320
   # - slack: '#core'
   # - campfire: 619691
 
 checkers:
-  # - name: My Site
-  #   url: http://localhost:9292/
-  #   notify: *notify
-  #   status: 200
-
-  - name: Codeplane
-    url: https://codeplane.com/
-    notify: *notify
-    status: 200
-    min_failures: 2
-
-  - name: Codeplane
-    url: https://codeplane.com.br/
-    notify: *notify
-    status: 200
-    min_failures: 2
-
   - name: Hellobits
     url: http://hellobits.com/
-    notify: *notify
-    status: 200
-    min_failures: 2
-
-  - name: HOWTO
-    url: http://howtocode.com.br/
     notify: *notify
     status: 200
     min_failures: 2
@@ -51,8 +27,8 @@ checkers:
     status: 200
     min_failures: 2
 
-  # - name: Presentta
-  #   url: https://presentta.com.br/
-  #   notify: *notify
-  #   status: 200
-  #   min_failures: 2
+  - name: Portfolio
+    url: https://portfolionow.co/
+    notify: *notify
+    status: 200
+    min_failures: 2
