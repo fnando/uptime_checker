@@ -4,7 +4,7 @@ module UptimeChecker
   end
 
   def self.load_file(path)
-    YAML.load ERB.new(File.read(path), nil, "-").result(binding)
+    YAML.safe_load ERB.new(File.read(path), nil, "-").result(binding)
   end
 
   class Runner
