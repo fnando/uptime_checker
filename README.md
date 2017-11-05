@@ -64,7 +64,7 @@ For more information about the notifiers, keep reading this README.
 
 #### Failures threshold
 
-You can set the minimum number of failures before triggering the notification. By default you'll be notified every time a check fails. 
+You can set the minimum number of failures before triggering the notification. By default you'll be notified every time a check fails.
 
 The following example will send notifications only when check fails three times.
 
@@ -204,7 +204,7 @@ checkers:
 2. Set your password as `SENDGRID_PASSWORD` environment variable.
 3. Set the notification as `email: <email address>`.
 
-Example: 
+Example:
 
 ```yaml
 # these are the default notifications
@@ -287,7 +287,7 @@ checkers:
 
 ### Pushover
 
-To be notified through iOS/Android push notifications, you can use Pushover ($5 for a lifetime license). You can also buy a lifetime license for desktop notifications (or use [Noti](https://notiapp.com) instead).
+To be notified through iOS/Android push notifications, you can use Pushover ($5 for a lifetime license). You can also buy a lifetime license for desktop notifications.
 
 1. Create a new application at https://pushover.net/apps/build
 2. Set the API token as the `PUSHOVER_APPLICATION_TOKEN` environment variable.
@@ -308,26 +308,3 @@ checkers:
 ```
 
 ![Pushover Notifications](https://raw.githubusercontent.com/fnando/uptime_checker/master/screenshots/pushover.png)
-
-### Noti
-
-1. Create a new application at https://notiapp.com/apps/new
-2. Set the API as the `NOTI_API_TOKEN` environment variable.
-3. Run `ruby setup/noti.rb` locally to get your user token. You may need to install the dependencies with `bundle install` before doing it so.
-4. Set the notification as `noti: <user token>`
-
-To avoid committing your user token, you can set it as an environment variable (e.g. `NOTI_JOHN`), and then use eRb code like the following:
-
-```yaml
-# these are the default notifications
-notify: &notify
-  - noti: <%= ENV["NOTI_JOHN"] %>
-
-checkers:
-  - name: My Site
-    url: http://example.com
-    notify: *notify
-    status: 200
-```
-
-![Noti Notifications](https://raw.githubusercontent.com/fnando/uptime_checker/master/screenshots/noti.png)
